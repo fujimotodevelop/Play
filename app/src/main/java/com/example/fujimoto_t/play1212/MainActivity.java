@@ -7,6 +7,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import io.realm.Realm;
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Realm.init(this);
         setContentView(R.layout.activity_main);
 
         BottomNavigationView = (BottomNavigation) findViewById(R.id.navigation);
@@ -24,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuItemSelect(@IdRes int i, int i1, boolean b) {
                 switch (i1) {
                     case 0:
-                        replaceFragment(Navigation_Home.newInstance());//Fragmentを入れ替える
+                        replaceFragment(Navigation_Home.newInstance());
                         break;
                     case 1:
-                        replaceFragment(Navigation_Search.newInstance());//Fragmentを入れ替える
+                        replaceFragment(Navigation_Search.newInstance());
                         break;
                     case 2:
-                        replaceFragment(Navigation_Mypage.newInstance());//Fragmentを入れ替える
+                        replaceFragment(Navigation_Mypage.newInstance());
                         break;
                 }
             }
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addFragment(Navigation_Home.newInstance());//最初はadd
+        addFragment(Navigation_Home.newInstance());
 
     }
 
